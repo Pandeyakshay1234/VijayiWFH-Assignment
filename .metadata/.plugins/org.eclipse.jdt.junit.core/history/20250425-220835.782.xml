@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TaskControllerTest" project="taskmanager" tests="5" started="5" failures="0" errors="2" ignored="0">
+  <testsuite name="com.taskmanagement.taskmanager.TaskControllerTest" time="3.153" displayname="TaskControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]">
+    <testcase name="testGetAllTasks" classname="com.taskmanagement.taskmanager.TaskControllerTest" time="3.027" displayname="testGetAllTasks()" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]/[method:testGetAllTasks()]"/>
+    <testcase name="testUpdateTask" classname="com.taskmanagement.taskmanager.TaskControllerTest" time="0.039" displayname="testUpdateTask()" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]/[method:testUpdateTask()]">
+      <error>com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.taskmanagement.dto.TaskDto["expectedStartDateTime"])&#13;
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)&#13;
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1340)&#13;
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)&#13;
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)&#13;
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:770)&#13;
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:184)&#13;
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:502)&#13;
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:341)&#13;
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4819)&#13;
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:4060)&#13;
+	at com.taskmanagement.taskmanager.TaskControllerTest.testUpdateTask(TaskControllerTest.java:122)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testCreateTask" classname="com.taskmanagement.taskmanager.TaskControllerTest" time="0.026" displayname="testCreateTask()" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]/[method:testCreateTask()]">
+      <error>com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.taskmanagement.dto.TaskDto["expectedStartDateTime"])&#13;
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)&#13;
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1340)&#13;
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)&#13;
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)&#13;
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:770)&#13;
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:184)&#13;
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:502)&#13;
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:341)&#13;
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4819)&#13;
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:4060)&#13;
+	at com.taskmanagement.taskmanager.TaskControllerTest.testCreateTask(TaskControllerTest.java:89)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetTaskById" classname="com.taskmanagement.taskmanager.TaskControllerTest" time="0.03" displayname="testGetTaskById()" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]/[method:testGetTaskById()]"/>
+    <testcase name="testDeleteTask" classname="com.taskmanagement.taskmanager.TaskControllerTest" time="0.028" displayname="testDeleteTask()" uniqueid="[engine:junit-jupiter]/[class:com.taskmanagement.taskmanager.TaskControllerTest]/[method:testDeleteTask()]"/>
+  </testsuite>
+</testrun>
