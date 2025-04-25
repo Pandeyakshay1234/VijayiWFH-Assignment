@@ -1,0 +1,16 @@
+package com.taskmanagement.taskmanager;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.taskmanagement.entity" , "com.taskmanagement.repository"})
+
+public class TaskmanagerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TaskmanagerApplication.class, args);
+	}
+
+}

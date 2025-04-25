@@ -1,0 +1,32 @@
+package com.taskmanagement.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+
+import com.taskmanagement.Enum.TaskStatus;
+
+public class TaskDto {
+
+    @NotBlank(message = "Title is required")
+    private String title;
+
+    @NotBlank(message = "Description is required")
+    private String description;
+
+    @NotNull(message = "Status is required")
+    private TaskStatus status;
+
+    private LocalDateTime expectedstartdatetime;
+
+    private LocalDateTime expectedenddatetime;
+
+    @NotNull(message = "Assigned To is required")
+    private Long assignedToId;
+
+    @NotNull(message = "Created By is required")
+    private Long createdById;
+
+    // Getters and Setters
+}

@@ -1,0 +1,5 @@
+package com.taskmanagement.execptions;
+
+public class GlobalExceptionHandler {
+
+}

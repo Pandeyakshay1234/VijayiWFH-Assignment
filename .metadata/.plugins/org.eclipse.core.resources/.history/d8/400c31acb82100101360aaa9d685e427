@@ -1,0 +1,139 @@
+package com.taskmanagement.serviceimplementations;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.taskmanagement.dto.TaskDto;
+import com.taskmanagement.entity.Task;
+import com.taskmanagement.entity.User;
+import com.taskmanagement.execptions.ResourceNotFoundException;
+import com.taskmanagement.repository.TaskRepository;
+import com.taskmanagement.repository.UserRepository;
+import com.taskmanagement.services.TaskService;
+
+@Service
+
+public class TaskServiceImplementation implements TaskService {
+
+	@Autowired
+	TaskRepository taskRepo;
+	
+	@Autowired
+	UserRepository userRepo;
+	
+	
+	@Override
+	public Task createTask(TaskDto taskDto) {
+		
+		Optional<Task> existingtask = taskRepo.findByTitleAndExpectedEndDAteTimeAndCreatedById(taskDto.getTitle(),taskDto.getExpectedenddatetime(), taskDto.getCreatedById());
+		
+		if(existingtask.isPresent()) {
+			throw new IllegalArgumentException("can not have same title and same end datetime for the same user ");
+		}
+		
+		User createdBy = new User();
+		try {
+			createdBy = userRepo.findById(taskDto.getCreatedById())
+			        .orElseThrow(() -> new ResourceNotFoundException("CreatedBy user not found"));
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+		
+//		User createdBy = userRepo.findById(taskDto.getCreatedById())
+//				         .orElseThrow(()-> new ResourceNotFoundException("created user not found"));
+				          
+				         
+		User assingTo = new User();
+		try {
+			 assingTo =  userRepo.findById(taskDto.getAssignedToId())
+					       .orElseThrow(() -> new ResourceNotFoundException("assign to user not found"));
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+		
+		Task task = new Task();
+		task.setCreatedBy(createdBy);
+		task.setAssignedTo(assingTo);
+		task.setTitle(taskDto.getTitle());
+		task.setDescription(taskDto.getDescription());
+		task.setExpectedEndDateTime(taskDto.getExpectedenddatetime());
+		task.setExpectedStartDateTime(taskDto.getExpectedstartdatetime());
+		
+		
+		return taskRepo.save(task);
+	}
+
+	
+	@Override
+	public Task updateTask(Long id, TaskDto Dto) {
+		
+		Task task = new Task();
+		
+		try {
+			task = taskRepo.findById( id)
+					   .orElseThrow(() -> new ResourceNotFoundException("task not found"));
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		User CreatedBy = new User();
+		try {
+			CreatedBy = userRepo.findById(Dto.getCreatedById())
+					          .orElseThrow(()-> new ResourceNotFoundException("user not found"));
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		User AssignTo = new User();
+		try {
+			AssignTo = userRepo.findById(Dto.getAssignedToId())
+					        .orElseThrow(()-> new ResourceNotFoundException("assigned user not found"));
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+				
+				
+		
+				
+				
+		task.setTitle(Dto.getTitle());
+        task.setDescription(Dto.getDescription());
+        task.setExpectedStartDateTime(Dto.getExpectedstartdatetime());
+        task.setExpectedEndDateTime(Dto.getExpectedenddatetime());
+        task.setCreatedBy(CreatedBy);
+        task.setAssignedTo(AssignTo);
+		
+		return null;
+	}
+
+	@Override
+	public void deleteTask(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Task getTaskById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Task> getAllTasks(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

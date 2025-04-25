@@ -1,0 +1,5 @@
+package com.taskmanagement.services;
+
+public interface UserService {
+
+}

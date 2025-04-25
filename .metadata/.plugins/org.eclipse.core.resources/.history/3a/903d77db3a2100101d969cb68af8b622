@@ -1,0 +1,14 @@
+package com.taskmanagement.serviceimplementations;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.taskmanagement.entity.Task;
+
+public interface TaskRepository  extends  JpaRepository<Task , Long> {
+
+	Optional<Task> findByTitleAndExpectedEndDAteTimeAndCreatedById(String title , LocalDateTime endTime , Long createdById);
+	
+}
